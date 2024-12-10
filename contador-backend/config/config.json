@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "aribbmto_mir_demo",
+    "password": "123qweasdzxcasdqwe123",
+    "database": "aribbmto_mir_personal",
+    "host": "66.225.221.133",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

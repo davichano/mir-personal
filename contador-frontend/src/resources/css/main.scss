@@ -1,0 +1,67 @@
+body {
+  header {
+    .navbar-logo {
+      img {
+        max-height: 60px;
+      }
+    }
+  }
+
+  footer {
+    border-top: 5px solid #282c34;
+    text-align: left;
+
+    .footer-company-info {
+
+      img {
+        max-height: 50px;
+      }
+
+      h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      h3 {
+        color: #282c34;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      p {
+        color: #282c34;
+        margin-top: 20px;
+        font-size: 12px;
+      }
+    }
+
+    .footer-menu {
+      h1 {
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      .list-group-item {
+        border: none !important;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .card {
+    .card-img-top {
+      height: 250px;
+      width: auto;
+    }
+  }
+
+  .start-up-info {
+    img {
+      max-height: 250px;
+    }
+  }
+}
