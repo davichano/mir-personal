@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// Middleware
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
