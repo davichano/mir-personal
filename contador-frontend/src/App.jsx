@@ -12,8 +12,7 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <StartupContext.Provider value={{startUps}}>
-        <div className={"container"}>
+      <StartupContext.Provider value={{ startUps: startUps.startUps || [] }}>        <div className={"container"}>
           <AccountantRouter></AccountantRouter>
         </div>
       </StartupContext.Provider>

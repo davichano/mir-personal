@@ -30,12 +30,18 @@ const UserService = {
     },
 
     loginUser: async (email, password) => {
-        const user = await UserRepository.getUserByEmail(email);
+        let user = await UserRepository.getUserByEmail(email);
         if (!user) throw new Error('Usuario no encontrado');
+        user = user.dataValues;
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) throw new Error('Credenciales inválidas');
 
-        return jwt.sign({id: user.id, email: user.email}, process.env.JWT_SECRET, {
+        const secret = process.env.JWT_SECRET;
+        if (!secret) {
+            throw new Error("JWT_SECRET no está configurado en el archivo .env");
+        }
+        console.log("User Logueado:", user)
+        return jwt.sign({id: user.id, email: user.email}, secret, {
             expiresIn: '1h',
         });
     },

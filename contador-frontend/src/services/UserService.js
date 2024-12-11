@@ -14,7 +14,7 @@ const UserService = {
   },
 
   createUser: async (data) => {
-    const response = await axios.post(API_URL, data);
+    const response = await axios.post(API_URL + '/register', data);
     return response.data;
   },
 
@@ -35,6 +35,31 @@ const UserService = {
 
   login: async (data) => {
     const response = await axios.post(`${API_URL}/login`, data);
+    return response.data;
+  },
+
+  getProfile: async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await axios.get(`${API_URL}/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+    }
+  },
+
+  updateUserWithFile: async (id, formData) => {
+    const token = localStorage.getItem('token');
+    const response = await axios.put(`${API_URL}/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   },
 };

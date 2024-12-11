@@ -70,6 +70,35 @@ const UserController = {
             res.status(500).json({error: error.message});
         }
     },
+
+    getProfile: async (req, res) => {
+        try {
+            const {id} = req.user;
+            console.log(req.user);
+            const user = await UserService.getUserById(id);
+            res.json(user);
+        } catch (error) {
+            res.status(500).json({error: 'Error al obtener el perfil'});
+        }
+    },
+
+    updateUserWithFile: async (req, res) => {
+        try {
+            const {id} = req.params;
+            const data = {...req.body};
+
+            if (req.file) {
+                data.company_logo = `/uploads/${req.file.filename}`;
+            }
+
+            const updatedUser = await UserService.updateUser(id, data);
+            if (!updatedUser) return res.status(404).json({error: 'Usuario no encontrado'});
+            res.json(updatedUser);
+        } catch (error) {
+            res.status(500).json({error: 'Error al actualizar el usuario'});
+        }
+    },
+
 };
 
 module.exports = UserController;
